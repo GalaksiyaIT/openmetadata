@@ -33,6 +33,11 @@ nano /etc/containerd/config.toml
 
 systemctl restart containerd kubelet
 
+
+kubeadm init --pod-network-cidr=192.168.0.0/16 --control-plane-endpoint=
+
+# PV dosyasında hostname ve yukardaki komutda ip adresini düzenleyiniz.
+
 # DB:
   airflow_db
   openmetadata_db
