@@ -1,0 +1,67 @@
+replicaCount: 1
+
+openmetadata:
+  config:
+    openmetadata:
+      host: "0.0.0.0"
+      uri: "http://openmetadata:8585"
+      port: 8585
+      adminPort: 8586
+    elasticsearch:
+      enabled: true
+      host: opensearch
+      searchType: opensearch
+      port: 9200
+      scheme: http
+      clusterAlias: ""
+      trustStore:
+        enabled: false
+        path: ""
+        password:
+          secretRef: "elasticsearch-truststore-secrets"
+          secretKey: "openmetadata-elasticsearch-truststore-password"
+      auth:
+        enabled: false
+        username: "elasticsearch"
+        password:
+          secretRef: elasticsearch-secrets
+          secretKey: openmetadata-elasticsearch-password
+    authentication:
+      enableSelfSignup: false
+    authorizer:
+      enabled: true
+      className: "org.openmetadata.service.security.DefaultAuthorizer"
+      containerRequestFilter: "org.openmetadata.service.security.JwtFilter"
+      initialAdmins:
+      - "admin"
+      allowedEmailRegistrationDomains:
+      - "all"
+      principalDomain: "ikc.edu.tr"
+      enforcePrincipalDomain: false
+      enableSecureSocketConnection: false
+      useRolesFromProvider: false
+    database:
+      enabled: true
+      host: openmetadata-dependencies-postgresql
+      port: 5432
+      driverClass: org.postgresql.Driver
+      dbScheme: postgresql
+      databaseName: openmetadata_db
+      dbParams: "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC"
+      auth:
+        username: openmetadata_user
+        password:
+          secretRef: postgres-secrets
+          secretKey: openmetadata-postgres-password
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: open-metadata.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []

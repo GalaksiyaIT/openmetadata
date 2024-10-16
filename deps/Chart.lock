@@ -1,0 +1,12 @@
+dependencies:
+- name: airflow
+  repository: https://airflow-helm.github.io/charts
+  version: 8.9.0
+- name: opensearch
+  repository: https://opensearch-project.github.io/helm-charts/
+  version: 2.12.1
+- name: postgresql
+  repository: https://charts.helm.sh/stable
+  version: 8.6.4
+digest: sha256:82e4bf62f915be20ef39b9fbcc521a7f838362a200f2ba1726522232c3ca613a
+generated: "2024-10-15T15:29:20.790103+03:00"
