@@ -11,6 +11,14 @@ spec:
   storageClassName: local-storage
   local:
     path: /mnt/vol0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - openmetadata
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -25,6 +33,14 @@ spec:
   storageClassName: local-storage
   local:
     path: /mnt/vol1
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - openmetadata
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -39,6 +55,14 @@ spec:
   storageClassName: local-storage
   local:
     path: /mnt/vol2
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - openmetadata
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -53,3 +77,11 @@ spec:
   storageClassName: local-storage
   local:
     path: /mnt/vol3
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - openmetadata

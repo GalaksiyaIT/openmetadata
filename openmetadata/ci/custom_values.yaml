@@ -55,7 +55,7 @@ openmetadata:
           secretKey: openmetadata-postgres-password
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
     # kubernetes.io/tls-acme: "true"

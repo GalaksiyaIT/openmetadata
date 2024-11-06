@@ -44,3 +44,17 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.2/manifests/tigera-operator.yaml
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.2/manifests/custom-resources.yaml -O
 kubectl create -f custom-resources.yaml
+
+kubectl taint nodes openmetadata node-role.kubernetes.io/control-plane:NoSchedule-
+
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+mkdir /mnt/
+mkdir /mnt/vol0 /mnt/vol1 /mnt/vol2 /mnt/vol3
+chmod -R 777 /mnt/vol0 /mnt/vol1 /mnt/vol2 /mnt/vol3
+
+current_hostname=$(hostname)
+sed -i "s/openmetadata/$current_hostname/g" ./pv.yaml
+sed -i "s/127.0.0.1/$IP_ADDRESS/g" ./ingress-nginx/custom-values.yaml

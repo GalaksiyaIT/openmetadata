@@ -1,0 +1,17 @@
+controller:
+  replicaCount: 1
+
+  service:
+    enabled: true
+    externalIPs:
+      - 127.0.0.1
+    externalTrafficPolicy: "Local"
+
+  config:
+    compute-full-forwarded-for: "false"
+    proxy-add-original-uri-header: "false"
+    use-forwarded-headers: "true"
+
+  metrics:
+    port: 10254
+    enabled: true
