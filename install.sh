@@ -9,5 +9,5 @@ kubectl create secret generic airflow-secrets --from-literal=openmetadata-airflo
 kubectl create secret generic airflow-postgres-secrets --from-literal=airflow-postgres-password=GJ9XkVeYWDzQmxvCcjRadA -n openmetadata
 
 helm upgrade --install openmetadata-dependencies deps -n openmetadata -f deps/ci/custom_values.yaml
-
 helm upgrade --install openmetadata openmetadata -n openmetadata --create-namespace -f openmetadata/ci/custom_values.yaml
+helm upgrade --install ingress-nginx ingress-nginx -n ingress-nginx -f ingress-nginx/custom-values.yaml --create-namespace 
