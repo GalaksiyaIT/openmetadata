@@ -67,8 +67,7 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "36000"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "36000"
   hosts:
-    - host: open-metadata.local
-      paths:
+    - paths:
         - path: /
           pathType: ImplementationSpecific
   tls: []

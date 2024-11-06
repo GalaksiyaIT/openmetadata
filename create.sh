@@ -51,8 +51,8 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 ./get_helm.sh
 
-mkdir /mnt/
-mkdir /mnt/vol0 /mnt/vol1 /mnt/vol2 /mnt/vol3
+mkdir -p /mnt/
+mkdir -p /mnt/vol0 /mnt/vol1 /mnt/vol2 /mnt/vol3
 chmod -R 777 /mnt/vol0 /mnt/vol1 /mnt/vol2 /mnt/vol3
 
 current_hostname=$(hostname)
