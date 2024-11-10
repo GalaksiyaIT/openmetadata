@@ -45,7 +45,7 @@ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.2
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.2/manifests/custom-resources.yaml -O
 kubectl create -f custom-resources.yaml
 
-kubectl taint nodes openmetadata node-role.kubernetes.io/control-plane:NoSchedule-
+kubectl taint nodes $(hostname) node-role.kubernetes.io/control-plane:NoSchedule-
 
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
